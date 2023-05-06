@@ -27,7 +27,6 @@ public class CloudInterceptor implements Interceptor {
         //        .header("Authorization", "").build();
         String name = DSUtils.get().getString(SPKEY.UserName);
         Log.d(Constant.APP_TAG, "intercept: 用户名:" + name);
-        Log.d(Constant.APP_TAG, "intercept: 拦截成功");
         return originalResponse;
     }
 }
