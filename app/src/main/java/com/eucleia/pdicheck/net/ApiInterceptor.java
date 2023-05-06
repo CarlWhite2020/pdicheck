@@ -26,7 +26,7 @@ public class ApiInterceptor implements Interceptor {
         //Request updateRequest = originalRequest.newBuilder()
         //        .header("Authorization", "").build();
         String name = DSUtils.get().getString(SPKEY.UserName);
-        Log.d(Constant.APP_TAG, "intercept: 用户名:" + name);
+        //Log.d(Constant.APP_TAG, "intercept: 用户名:" + name);
         return originalResponse;
     }
 }
