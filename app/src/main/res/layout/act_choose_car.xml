@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.eucleia.pdicheck.listener.SingleClickListener" />
+
+        <variable
+            name="modelData"
+            type="java.util.ArrayList" />
+
+        <variable
+            name="yearData"
+            type="java.util.ArrayList" />
+
+        <variable
+            name="itemListener"
+            type="com.eucleia.pdicheck.listener.ChooseSpinnerListener" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/head_base"
+            layout="@layout/layout_head_base" />
+
+        <TextView
+            android:id="@+id/choose_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/head_base"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_30"
+            android:text="@string/choose_car_hint1"
+            android:textColor="@color/main"
+            android:textSize="@dimen/sp_10" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/choose_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/choose_hint"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_15"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="match_parent"
+                android:text="@string/carModels"
+                android:textColor="@color/txt_title"
+                android:textSize="@dimen/sp_11" />
+
+            <TextView
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_66"
+                android:text="@string/year"
+                android:textColor="@color/txt_title"
+                android:textSize="@dimen/sp_11" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_30"
+            android:layout_below="@id/choose_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_5"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_model"
+                style="@style/BaseSpinner"
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="match_parent"
+                android:background="@drawable/block_white2"
+                android:dropDownVerticalOffset="@dimen/dp_35"
+                android:onItemSelected="@{itemListener::modelSelected}"
+                android:textColor="@color/text_main"
+                android:textColorHint="@color/text_third"
+                android:textSize="@dimen/sp_11" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_year"
+                style="@style/BaseSpinner"
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_66"
+                android:background="@drawable/block_white2"
+                android:dropDownVerticalOffset="@dimen/dp_35"
+                android:onItemSelected="@{itemListener::yearSelected}"
+                android:textColor="@color/text_main"
+                android:textColorHint="@color/text_third"
+                android:textSize="@dimen/sp_11" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <TextView
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_30"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp_13"
+            android:background="@drawable/block_mian1"
+            android:gravity="center"
+            android:onClick="@{listener::singleClick}"
+            android:text="@string/commit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_11" />
+
+    </RelativeLayout>
+
+</layout>

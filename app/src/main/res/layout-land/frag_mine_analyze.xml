@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isCollect"
+            type="boolean" />
+
+        <variable
+            name="listener"
+            type="com.eucleia.pdicheck.listener.CollectFunListener" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/head_normal"
+            layout="@layout/layout_head_normal" />
+
+        <RelativeLayout
+            android:id="@+id/diag_collect"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_35"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/block_white2"
+            android:onClick="@{listener::switchCollect}"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawablePadding="@dimen/dp_10"
+                android:gravity="center_vertical"
+                android:text="@string/diag_collect"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/sp_11" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/diag_collect_switch"
+                style="@style/BaseSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:checked="@{isCollect}"
+                android:clickable="false" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/analyse1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:textColor="@color/text_third"
+            android:textSize="@dimen/sp_8" />
+
+
+        <RelativeLayout
+            android:id="@+id/diag_analyse"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_35"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/block_white2"
+            android:onClick="@{listener::toLogList}"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/diag_logs"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/sp_11"
+                app:drawableEndCompat="@drawable/ic_right" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:text="@string/analyse_2"
+            android:textColor="@color/text_third"
+            android:textSize="@dimen/sp_8" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

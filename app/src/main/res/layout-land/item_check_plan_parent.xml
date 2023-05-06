@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_38"
+        android:paddingEnd="@dimen/dp_10"
+        android:background="@drawable/block_white2">
+
+        <ImageView
+            android:id="@+id/check_box"
+            android:layout_width="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:src="@drawable/ic_uncheck"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true" />
+
+        <View
+            android:id="@+id/center"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0_5"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_1"
+            android:layout_marginEnd="@dimen/dp_1"
+            android:layout_marginBottom="@dimen/dp_1" />
+        <TextView
+            android:id="@+id/parent_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/center"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/dp_5"
+            android:layout_toEndOf="@id/check_box"
+            android:textColor="@color/text_main"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:id="@+id/check_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/center"
+            android:layout_alignStart="@id/parent_text"
+            android:textColor="@color/text_third"
+            android:textSize="@dimen/sp_7" />
+
+        <ImageView
+            android:id="@+id/end_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_right" />
+
+        <View
+            android:id="@+id/bottom_line"
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignEnd="@id/end_view"
+            android:background="@color/split"
+            android:layout_alignStart="@id/parent_text"
+            android:layout_height="@dimen/dp_0_5"/>
+    </RelativeLayout>
+</layout>

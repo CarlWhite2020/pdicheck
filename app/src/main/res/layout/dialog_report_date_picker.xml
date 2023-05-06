@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/block_white2"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:padding="10dp">
+
+        <View
+            android:id="@+id/center"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:background="@color/split" />
+
+        <TextView
+            android:id="@+id/start_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/center"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/center"
+            android:gravity="center"
+            android:text="@string/start_date"
+            android:textColor="@color/text_third"
+            android:textSize="@dimen/sp_11" />
+
+        <TextView
+            android:id="@+id/start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/center"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/center"
+            android:gravity="center"
+            android:textColor="@color/text_third"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/end_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/center"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@id/center"
+            android:gravity="center"
+            android:text="@string/end_date"
+            android:textColor="@color/text_third"
+            android:textSize="@dimen/sp_11" />
+
+        <TextView
+            android:id="@+id/end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/center"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@id/center"
+            android:gravity="center"
+            android:textColor="@color/text_third"
+            android:textSize="@dimen/sp_12" />
+
+    </RelativeLayout>
+
+    <com.eucleia.pdicheck.widget.wheelpicker.widgets.WheelDatePicker
+        android:id="@+id/picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_30"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/text_main"
+            android:textSize="@dimen/sp_12" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="@dimen/dp_30"
+            android:background="@color/split" />
+
+        <TextView
+            android:id="@+id/btn_ok"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_30"
+            android:gravity="center"
+            android:text="@string/define"
+            android:textColor="@color/text_main"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+
+</LinearLayout>
+</layout>

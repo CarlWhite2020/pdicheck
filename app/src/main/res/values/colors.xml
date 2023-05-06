@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#799E9F</color>
+    <color name="colorPrimaryDark">#274F50</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!--00%=FF（不透明）    5%=F2    10%=E5    15%=D8    20%=CC    25%=BF    30%=B2    35%=A5    40%=99    45%=8c    50%=7F
+    55%=72    60%=66    65%=59    70%=4c    75%=3F    80%=33    85%=21    90%=19    95%=0c    100%=00（全透明）-->
+    <color name="black5">#F2000000</color>
+    <color name="black10">#E5000000</color>
+    <color name="black15">#D8000000</color>
+    <color name="black20">#CC000000</color>
+    <color name="black25">#BF000000</color>
+    <color name="black30">#B2000000</color>
+    <color name="black35">#A5000000</color>
+    <color name="black40">#99000000</color>
+    <color name="black45">#8C000000</color>
+    <color name="black50">#7F000000</color>
+    <color name="black55">#72000000</color>
+    <color name="black60">#66000000</color>
+    <color name="black65">#59000000</color>
+    <color name="black70">#4C000000</color>
+    <color name="black75">#3F000000</color>
+    <color name="black80">#33000000</color>
+    <color name="black85">#21000000</color>
+    <color name="black90">#19000000</color>
+    <color name="black95">#0C000000</color>
+    <color name="transparent">#00000000</color>
+
+
+    <!-- 白色 -->
+    <color name="white">#FFFFFF</color>
+    <color name="white70">#4CFFFFFF</color>
+
+    <!--红，橙红，橙，橙黄，黄，黄绿，绿，蓝绿，蓝，蓝紫，紫，紫红-->
+    <!-- 蓝色 -->
+    <color name="blue">#0000FF</color>
+    <!-- 绿色 -->
+    <color name="green">#00FF00</color>
+    <!-- 红色 -->
+    <color name="red">#FF0000</color>
+    <!-- 青色 -->
+    <color name="cyan">#00FFFF</color>
+    <!-- 洋红色,紫红色 -->
+    <color name="magenta">#FF00FF</color>
+    <!-- 黄色 -->
+    <color name="yellow">#FFFF00</color>
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
+    <!-- 暗灰色 -->
+    <color name="gray_dk">#444444</color>
+    <!-- 灰色 -->
+    <color name="gray">#888888</color>
+    <!-- 亮灰色 -->
+    <color name="gray_lt">#CCCCCC</color>
+    <color name="gray_lt1">#DDDDDD</color>
+
+
+    <color name="main">#799E9F</color>
+    <color name="main90">#19799E9F</color>
+    <color name="assist">#117F82</color>
+    <color name="progress">#D4E2E3</color>
+    <color name="positive">#00C133</color>
+    <color name="negative">#FC535D</color>
+    <color name="split">#C1D5D6</color>
+    <color name="block">#7FFFFFFF</color>
+    <color name="press">#276163</color>
+    <color name="forbidden">#CFCFCF</color>
+    <color name="error">#E3813F</color>
+    <color name="warn">#F8AC2F</color>
+
+    <color name="txt_title">#274F50</color>
+
+    <color name="text_main">#333333</color>
+    <color name="text_second">#666666</color>
+    <color name="text_third">#999999</color>
+    <color name="text_hint">#9FBEC0</color>
+    <color name="text_home">#3A8284</color>
+
+
+</resources>

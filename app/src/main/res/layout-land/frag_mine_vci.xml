@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="ver"
+            type="com.eucleia.pdicheck.bean.normal.VciVersion" />
+
+        <variable
+            name="listener"
+            type="com.eucleia.pdicheck.listener.SingleClickListener" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_head_normal"
+            android:id="@+id/head_normal"/>
+
+        <androidx.core.widget.NestedScrollView
+            style="@style/BaseScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:src="@drawable/vci_line" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:text="@{ver.version}"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_11" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="@{ver.hint}"
+                    android:textColor="@color/text_second"
+                    android:textSize="@dimen/sp_11" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/update"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_30"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/dp_13"
+            android:background="@drawable/block_mian1"
+            android:gravity="center"
+            android:text="固件升级"
+            android:onClick="@{listener::singleClick}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_11" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

@@ -1,0 +1,393 @@
+package com.eucleia.pdicheck.net.presenter;
+
+import android.text.TextUtils;
+
+import com.eucleia.pdicheck.listener.WritePDF7Listener;
+import com.eucleia.pdicheck.room.database.AppDatabase;
+import com.eucleia.pdicheck.room.entity.PdiReport;
+import com.eucleia.tabscanap.bean.diag.CDispPdiCheckBeanEvent;
+import com.eucleia.pdicheck.bean.normal.PdiGroup;
+import com.eucleia.pdicheck.bean.normal.PdiItem;
+import com.eucleia.tabscanap.constant.CharVar;
+import com.eucleia.tabscanap.constant.PDF7Constant;
+import com.eucleia.pdicheck.bean.constant.SPKEY;
+import com.eucleia.tabscanap.util.ArraysUtils;
+import com.eucleia.tabscanap.util.DSUtils;
+import com.eucleia.tabscanap.util.ELogUtils;
+import com.eucleia.tabscanap.util.Pdf7Utils;
+import com.itextpdf.kernel.colors.DeviceRgb;
+import com.itextpdf.kernel.pdf.canvas.draw.DashedLine;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Div;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.LineSeparator;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.properties.HorizontalAlignment;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.VerticalAlignment;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
+/**
+ * PDI PDF 生成工具
+ */
+public class PdiWritePDF7PresenterImpl implements WritePDF7Listener {
+
+    private CDispPdiCheckBeanEvent event;
+    private PdiReport report;
+
+    public PdiWritePDF7PresenterImpl(CDispPdiCheckBeanEvent event, PdiReport report) {
+        this.event = event;
+        this.report = report;
+    }
+
+    @Override
+    public void writeTo(Document doc) throws Exception {
+
+
+//        Image resultImage = event.getResult() == 1 ?
+//                Pdf7Utils.get().getImage(PDFConstant.qualifiedImage) :
+//                Pdf7Utils.get().getImage(PDFConstant.unqualifiedImage);
+//        resultImage.setFixedPosition(1, 345, 587);
+//        doc.add(resultImage);
+
+        //添加标题
+        Paragraph headParagraph = Pdf7Utils.get().getParagraph("Report")
+                .setFontSize(PDFConstant.headSize)
+                .setBold()
+                .setFontColor(PDFConstant.mainColor)
+                .setTextAlignment(TextAlignment.CENTER);
+        doc.add(headParagraph);
+
+
+        //添加报告编码
+//        doc.add(Pdf7Utils.get().getEmptyParagraph(30));
+//        String vin = TextUtils.isEmpty(report.vin) ? CharVar.EMPTY_VIN : report.vin;
+//        Paragraph codeParagraph = Pdf7Utils.get().getParagraph(ResUtils.getString(R.string.report_number) + vin + CharVar.MINUS +
+//                PDFConstant.format.format(report.createTime)).setFontSize(PDFConstant.hintSize);
+//        codeParagraph.setFixedLeading(15);
+//        doc.add(codeParagraph);
+
+        //添加报告检测信息
+//        addCheckInfo(doc);
+
+        //添加车辆信息
+//        addCarInfo(doc);
+
+        //添加每个检测组
+//        addGroup(doc);
+
+
+    }
+
+    private void addCheckInfo(Document doc) {
+        doc.add(Pdf7Utils.get().getEmptyParagraph(18));
+        Table infoTable = new Table(new float[]{2, 3, 2, 3});
+
+        //检测时间
+        Cell timeNameCell = Pdf7Utils.get().getPCell(ResUtils.getString(R.string.check_time));
+        Pdf7Utils.get().setPadding(timeNameCell, 14, 16, 0, 0);
+        infoTable.addCell(timeNameCell);
+        SimpleDateFormat timeValueFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+        Cell timeValueCell = Pdf7Utils.get().getPCell(timeValueFormat.format(report.createTime));
+        timeValueCell.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+        Pdf7Utils.get().setPadding(timeValueCell, 14, 0, 0, 14);
+        infoTable.addCell(timeValueCell);
+
+        //检测机构
+        Cell GTS_CCISNameCell = Pdf7Utils.get().getPCell(ResUtils.getString(R.string.check_co));
+        Pdf7Utils.get().setPadding(GTS_CCISNameCell, 14, 16, 0, 0);
+        infoTable.addCell(GTS_CCISNameCell);
+        Cell GTS_CCISValueCell = Pdf7Utils.get().getPCell(report.co);
+        GTS_CCISValueCell.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+        Pdf7Utils.get().setPadding(GTS_CCISValueCell, 14, 0, 0, 14);
+        infoTable.addCell(GTS_CCISValueCell);
+
+        //检测故障总数
+        Cell totalDtcNameCell = Pdf7Utils.get().getPCell(ResUtils.getString(R.string.pdi_total_dtc));
+        Pdf7Utils.get().setPadding(totalDtcNameCell, 6, 16, 14, 0);
+        infoTable.addCell(totalDtcNameCell);
+        Cell totalDtcValueCell = Pdf7Utils.get().getPCell(String.valueOf(event.getDtcNum()));
+        totalDtcValueCell.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+        Pdf7Utils.get().setPadding(totalDtcValueCell, 6, 0, 14, 14);
+        infoTable.addCell(totalDtcValueCell);
+
+        //检测设备
+        Cell deviceNameCell = Pdf7Utils.get().getPCell("检测设备");
+        Pdf7Utils.get().setPadding(deviceNameCell, 6, 16, 14, 0);
+        infoTable.addCell(deviceNameCell);
+        Cell deviceValueCell = Pdf7Utils.get().getPCell(DSUtils.get().getString(SPKEY.SNCODE));
+        deviceValueCell.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+        Pdf7Utils.get().setPadding(deviceValueCell, 6, 0, 14, 14);
+        infoTable.addCell(deviceValueCell);
+        doc.add(infoTable);
+    }
+
+    private void addCarInfo(Document doc) {
+        doc.add(Pdf7Utils.get().getEmptyParagraph(14));
+        Table carTable = new Table(new float[]{2, 3, 2, 3});
+
+        //品牌
+        Cell brandNameCell = Pdf7Utils.get().getPCell(ResUtils.getString(R.string.brand));
+        Pdf7Utils.get().setPadding(brandNameCell, 14, 16, 0, 0);
+        carTable.addCell(brandNameCell);
+        Cell brandValueCell = Pdf7Utils.get().getPCell(event.getBrand());
+        brandValueCell.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+        Pdf7Utils.get().setPadding(brandValueCell, 14, 0, 0, 14);
+        carTable.addCell(brandValueCell);
+
+        //年款
+        Cell yearNameCell = Pdf7Utils.get().getPCell(ResUtils.getString(R.string.year));
+        Pdf7Utils.get().setPadding(yearNameCell, 14, 16, 0, 0);
+        carTable.addCell(yearNameCell);
+        Cell yearValueCell = Pdf7Utils.get().getPCell(event.getYear());
+        yearValueCell.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+        Pdf7Utils.get().setPadding(yearValueCell, 14, 0, 0, 14);
+        carTable.addCell(yearValueCell);
+
+        //车型
+        Cell modelNameCell = Pdf7Utils.get().getPCell(ResUtils.getString(R.string.carModels));
+        Pdf7Utils.get().setPadding(modelNameCell, 6, 16, 14, 0);
+        carTable.addCell(modelNameCell);
+        Cell modelValueCell = Pdf7Utils.get().getPCell(event.getModel());
+        modelValueCell.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+        Pdf7Utils.get().setPadding(modelValueCell, 6, 0, 14, 14);
+        carTable.addCell(modelValueCell);
+
+        //vin码
+        Cell vinNameCell = Pdf7Utils.get().getPCell(ResUtils.getString(R.string.vin));
+        Pdf7Utils.get().setPadding(vinNameCell, 6, 16, 14, 0);
+        carTable.addCell(vinNameCell);
+        Cell vinValueCell = Pdf7Utils.get().getPCell(event.getVin());
+        vinValueCell.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+        Pdf7Utils.get().setPadding(vinValueCell, 6, 0, 14, 14);
+        carTable.addCell(vinValueCell);
+        doc.add(carTable);
+    }
+
+    private void addGroup(Document doc) throws IOException {
+        List<PdiGroup> groups = event.getGroups();
+        for (PdiGroup group : groups) {
+
+            doc.add(Pdf7Utils.get().getEmptyParagraph(14));
+            Table groupTable = new Table(1);
+
+            //如果有组名且显示时
+            if (group.isShowGroup()) {
+
+                Table groupNameTable = new Table(2);
+
+                //组名称
+                Paragraph groupNameParagraph = new Paragraph(group.getGroupName())
+                        .setFontColor(PDFConstant.mainColor)
+                        .setBold();
+                Cell groupNameCell = Pdf7Utils.get().getPCell(groupNameParagraph);
+                Pdf7Utils.get().setPadding(groupNameCell, 14, 15, 8, 0);
+                groupNameTable.addCell(groupNameCell);
+
+                //组状态
+                Image groupStatusImage = group.getResult() == 3 ?
+                        Pdf7Utils.get().getImage(PDFConstant.goodImage) :
+                        Pdf7Utils.get().getImage(PDFConstant.warnImage);
+                groupStatusImage.setBackgroundColor(DeviceRgb.WHITE);
+                groupStatusImage.scaleAbsolute(12, 12);
+                groupNameTable.addCell(groupStatusImage);
+
+                groupTable.addCell(groupNameTable);
+            }
+
+            //子项分布
+            List<PdiItem> items = group.getItems();
+            int leftHeight = 0, rightHeight = 0;
+            Table itemTotalTable = null, leftTable = null, rightTable = null;
+            Cell leftCell = null, rightCell = null;
+            if (items.size() > 1) {
+                itemTotalTable = new Table(new float[]{1, 1});
+                leftTable = new Table(1);
+                rightTable = new Table(1);
+                leftCell = Pdf7Utils.get().getPCell();
+                rightCell = Pdf7Utils.get().getPCell();
+            }
+            for (PdiItem item : items) {
+
+                Div itemCell = new Div();
+                Table itemNameTable = new Table(new float[]{2, 1});
+
+                //项名称
+                Paragraph itemNameParagraph = new Paragraph(item.getItemName())
+                        .setFontColor(PDFConstant.mainColor);
+                if (item.isGroupBold()) {
+                    itemNameParagraph.setBold();
+                }
+                Cell itemValueCell = Pdf7Utils.get().getPCell(itemNameParagraph);
+                Pdf7Utils.get().setPadding(itemValueCell, 4, 0, 0, 0);
+                itemNameTable.addCell(itemValueCell);
+
+                //项状态
+                Image itemStatusImage = item.getResult() == 3 ?
+                        Pdf7Utils.get().getImage(PDFConstant.goodImage) :
+                        Pdf7Utils.get().getImage(PDFConstant.errorImage);
+                itemStatusImage.setBackgroundColor(DeviceRgb.WHITE);
+                itemStatusImage.scaleAbsolute(12, 12);
+
+
+                Paragraph statusParagraph = new Paragraph();
+                if (!TextUtils.isEmpty(item.getItemValue())) {
+                    statusParagraph.add(new Text(item.getItemValue()));
+                }
+                statusParagraph.add(itemStatusImage);
+
+                Cell itemStatusCell = Pdf7Utils.get().getPCell(statusParagraph);
+                Pdf7Utils.get().setPadding(itemStatusCell, 4, 0, 0, 14);
+                itemStatusCell.setBackgroundColor(DeviceRgb.WHITE);
+                itemStatusCell.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+                itemStatusCell.setVerticalAlignment(VerticalAlignment.MIDDLE);
+                itemNameTable.addCell(itemStatusCell);
+
+                Cell itemNameCell = new Cell();
+                itemNameCell.add(itemNameTable);
+
+                if (item.isShowGroup()) {
+                    Table detailTable = new Table(1);
+
+                    //版本号
+                    StringBuilder line1 = new StringBuilder();
+                    if (!TextUtils.isEmpty(item.getItemPartNumber())) {
+                        line1.append("零件号：");
+                        line1.append(item.getItemPartNumber());
+                        line1.append(CharVar.SPACE);
+                    }
+                    if (!TextUtils.isEmpty(item.getItemVersionNumber())) {
+                        line1.append("版本号：");
+                        line1.append(item.getItemVersionNumber());
+                    }
+                    if (!TextUtils.isEmpty(line1)) {
+                        Paragraph verCell = Pdf7Utils.get().getParagraph(line1.toString())
+                                .setFontSize(PDFConstant.minSize)
+                                .setFontColor(PDFConstant.hintColor);
+                        detailTable.addCell(Pdf7Utils.get().getEmptyCell(2));
+                        detailTable.startNewRow();
+                        detailTable.addCell(verCell);
+                        detailTable.startNewRow();
+                    }
+
+                    //当前故障码
+                    if (!ArraysUtils.isEmpty(item.getItemCurDtc())) {
+                        StringBuilder line2 = new StringBuilder();
+                        line2.append("当前故障码");
+                        line2.append("\n");
+                        for (String cur : item.getItemCurDtc()) {
+                            line2.append(cur);
+                            line2.append(CharVar.COMMA);
+                        }
+                        line2.deleteCharAt(line2.lastIndexOf(CharVar.COMMA));
+                        Paragraph curCell = Pdf7Utils.get().getParagraph(line2.toString())
+                                .setFontSize(PDFConstant.hintSize)
+                                .setFontColor(PDFConstant.hintColor);
+                        detailTable.addCell(Pdf7Utils.get().getEmptyCell(2));
+                        detailTable.startNewRow();
+                        detailTable.addCell(curCell);
+                        detailTable.startNewRow();
+
+                    }
+
+                    //历史故障码
+                    if (!ArraysUtils.isEmpty(item.getItemHisDtc())) {
+                        StringBuilder line3 = new StringBuilder();
+                        line3.append("历史故障码");
+                        line3.append("\n");
+                        for (String his : item.getItemHisDtc()) {
+                            line3.append(his);
+                            line3.append(CharVar.COMMA);
+                        }
+                        line3.deleteCharAt(line3.lastIndexOf(CharVar.COMMA));
+                        Cell hisCell = Pdf7Utils.get().getPCell(new Paragraph(line3.toString())
+                                .setFontSize(PDFConstant.hintSize)
+                                .setFontColor(PDFConstant.hintColor));
+                        detailTable.startNewRow();
+                        detailTable.addCell(Pdf7Utils.get().getEmptyCell(2));
+                        detailTable.startNewRow();
+                        detailTable.addCell(hisCell);
+
+                    }
+
+                    Cell lineCell = Pdf7Utils.get().getPCell();
+                    detailTable.startNewRow();
+                    detailTable.addCell(Pdf7Utils.get().getEmptyCell(4));
+                    DashedLine dashedLine = new DashedLine();
+                    dashedLine.setColor(PDFConstant.splitColor);
+                    LineSeparator dottedLineSeparator = new LineSeparator(dashedLine);
+                    lineCell.add(dottedLineSeparator);
+                    detailTable.startNewRow();
+                    detailTable.addCell(lineCell);
+
+                    //下拉项
+                    Cell detailCell = new Cell();
+                    detailCell.setBackgroundColor(DeviceRgb.WHITE);
+                    detailCell.add(detailTable);
+
+                    Table itemTable = new Table(1);
+                    itemTable.addCell(itemNameCell);
+                    itemTable.addCell(detailCell);
+                    itemCell.setBackgroundColor(DeviceRgb.WHITE);
+                    itemCell.add(itemTable);
+                } else {
+                    itemCell.add(itemNameCell);
+                }
+
+                if (itemTotalTable == null) {
+                    groupTable.addCell(itemCell);
+                    Cell emptyCell = Pdf7Utils.get().getEmptyCell(2);
+                    emptyCell.setBackgroundColor(DeviceRgb.WHITE);
+                    groupTable.addCell(emptyCell);
+                } else {
+                    if (leftHeight <= rightHeight) {
+                        leftHeight++;
+                        leftTable.addCell(itemCell);
+                    } else {
+                        rightHeight++;
+                        rightTable.addCell(itemCell);
+                    }
+                }
+
+            }
+
+            if (itemTotalTable != null) {
+                leftCell.add(leftTable);
+                rightCell.add(rightTable);
+                itemTotalTable.addCell(leftCell);
+                itemTotalTable.addCell(rightCell);
+
+                groupTable.addCell(itemTotalTable);
+
+                Cell emptyCell = Pdf7Utils.get().getEmptyCell(2);
+                emptyCell.setBackgroundColor(DeviceRgb.WHITE);
+                groupTable.addCell(emptyCell);
+            }
+
+            doc.add(groupTable);
+        }
+    }
+
+    @Override
+    public void start() {
+        ELogUtils.v();
+    }
+
+    @Override
+    public void error(Throwable throwable) {
+        ELogUtils.e(throwable.getMessage());
+        throwable.printStackTrace();
+    }
+
+    @Override
+    public void complete() {
+        ELogUtils.d();
+        AppDatabase.get().getReportDao().createReport(report);
+    }
+}

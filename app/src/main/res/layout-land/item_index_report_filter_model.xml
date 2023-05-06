@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="model"
+            type="String" />
+
+        <variable
+            name="funListener"
+            type="com.eucleia.pdicheck.listener.IndexReportFunListener" />
+    </data>
+
+    <androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/item"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_20"
+        android:background="@drawable/block_grey4"
+        android:gravity="center"
+        android:onClick="@{funListener::modelClick}"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_10"
+        android:tag="@{model}"
+        android:text="@string/all"
+        android:textColor="@color/text_main"
+        android:textSize="@dimen/sp_10" />
+</layout>

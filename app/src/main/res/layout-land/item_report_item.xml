@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/block_grey3"
+        android:paddingBottom="@dimen/dp_1"
+        android:layout_height="@dimen/dp_60">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/data_id"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:textColor="@color/text_hint"
+            android:textSize="@dimen/sp_10"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginBottom="@dimen/dp_4"
+            android:layout_toEndOf="@id/data_id"
+            android:gravity="center"
+            android:textColor="@color/text_main"
+            android:textSize="@dimen/sp_8" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/year_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/number"
+            android:layout_alignStart="@id/number"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:textColor="@color/text_main"
+            android:textSize="@dimen/sp_11" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/upload_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/number"
+            android:layout_alignStart="@id/number"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:textColor="@color/text_main"
+            android:textSize="@dimen/sp_8" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dp_15"
+            android:drawableEnd="@drawable/ic_right"
+            android:drawablePadding="@dimen/dp_3"
+            android:gravity="center"
+            android:textColor="@color/text_main"
+            android:textSize="@dimen/sp_10" />
+
+
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@id/number"
+            android:layout_width="match_parent"
+            android:background="@color/split"
+            android:layout_height="@dimen/dp_0_5"/>
+    </RelativeLayout>
+
+</layout>

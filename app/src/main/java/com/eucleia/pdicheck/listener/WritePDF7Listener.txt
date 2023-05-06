@@ -1,0 +1,15 @@
+package com.eucleia.pdicheck.listener;
+
+
+import com.itextpdf.layout.Document;
+
+public interface WritePDF7Listener {
+
+    void writeTo(Document doc) throws Exception;
+
+    void start();
+
+    void error(Throwable throwable);
+
+    void complete();
+}

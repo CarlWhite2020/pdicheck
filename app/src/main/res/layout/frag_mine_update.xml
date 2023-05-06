@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="com.eucleia.pdicheck.listener.MineUpdateFunListener" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/head_normal"
+            layout="@layout/layout_head_normal" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/block_white2"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_35"
+                android:background="@drawable/block_white3"
+                android:onClick="@{clickListener::updateApp}"
+                android:paddingStart="@dimen/dp_10"
+                android:paddingEnd="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/app_update"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_11" />
+
+                <TextView
+                    android:id="@+id/app_ver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/text_hint"
+                    android:textSize="@dimen/sp_11"
+                    app:drawableEndCompat="@drawable/ic_right" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0_5"
+                android:layout_marginStart="@dimen/dp_10"
+                android:background="@color/split" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_35"
+                android:background="@drawable/block_white4"
+                android:onClick="@{clickListener::updateVci}"
+                android:paddingStart="@dimen/dp_10"
+                android:paddingEnd="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/vciUpdate"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_11" />
+
+                <TextView
+                    android:id="@+id/vci_ver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/text_hint"
+                    android:textSize="@dimen/sp_11"
+                    app:drawableEndCompat="@drawable/ic_right" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

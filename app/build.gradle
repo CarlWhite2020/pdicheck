@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        multiDexEnabled true
+        applicationId "com.eucleia.pdicheck"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 7
+        versionName "1.1.04"
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+    }
+    signingConfigs {
+        release {
+            keyAlias 'pdi'
+            keyPassword 'eucleia'
+            storeFile file('pdi_sign.jks')
+            storePassword 'eucleia'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+    productFlavors {
+        dev {
+            buildConfigField 'com.eucleia.pdicheck.FLAVOR', 'Flavor', 'com.eucleia.pdicheck.FLAVOR.DEV'
+        }
+        uat {
+            buildConfigField 'com.eucleia.pdicheck.FLAVOR', 'Flavor', 'com.eucleia.pdicheck.FLAVOR.UAT'
+        }
+        live {
+            buildConfigField 'com.eucleia.pdicheck.FLAVOR', 'Flavor', 'com.eucleia.pdicheck.FLAVOR.LIVE'
+        }
+    }
+    flavorDimensions 'pdi'
+
+
+}
+
+dependencies {
+//    implementation project(':bluetooth')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    // 分包 dex
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    // https://mvnrepository.com/artifact/com.google.android.material/material
+    implementation 'com.google.android.material:material:1.4.0'
+
+
+    //事件总线
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    //json解析
+    implementation 'com.alibaba:fastjson:1.2.73'
+    implementation 'com.alibaba:fastjson:1.1.72.android'
+
+    // https://mvnrepository.com/artifact/com.blankj/utilcode
+    implementation 'com.blankj:utilcode:1.30.7'
+
+
+    // https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxjava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
+    // https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxandroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+
+    // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+    implementation 'com.lzy.net:okgo:3.0.4'
+
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+    // optional - RxJava2 support
+    implementation "androidx.datastore:datastore-preferences-rxjava2:1.0.0"
+
+    implementation "androidx.room:room-runtime:2.2.5"
+    annotationProcessor "androidx.room:room-compiler:2.2.5"
+    implementation "androidx.room:room-rxjava2:2.2.5"
+
+    //https://mvnrepository.com/artifact/com.itextpdf/itextpdf
+    implementation 'com.itextpdf:itextpdf:5.5.13'
+
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+
+}

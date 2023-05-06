@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.eucleia.tabscanap.constant.CharVar" />
+
+        <variable
+            name="progress"
+            type="int" />
+
+        <variable
+            name="hint"
+            type="String" />
+
+        <variable
+            name="listener"
+            type="com.eucleia.pdicheck.listener.SingleClickListener" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/head_base"
+            layout="@layout/layout_head_base" />
+
+        <FrameLayout
+            android:id="@+id/progress_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_10"
+            android:paddingStart="@dimen/dp_15"
+            android:paddingEnd="@dimen/dp_15">
+
+            <ProgressBar
+                style="@style/BaseProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:progress="@{progress}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@{progress+CharVar.PERCENT}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_8" />
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/progress_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dp_2"
+            android:text="@{hint}"
+            android:textColor="@color/text_second"
+            android:textSize="@dimen/sp_7" />
+
+        <LinearLayout
+            android:id="@+id/upload_hint"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:gravity="center"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/status_image"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_refresh" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/status_text"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/text_second"
+                android:textSize="@dimen/sp_11" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/status_retry"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/click_retry"
+                android:textColor="@color/error"
+                android:textSize="@dimen/sp_11" />
+        </LinearLayout>
+
+
+        <com.eucleia.pdicheck.widget.CheckPlanScrollView
+            android:id="@+id/scroll_view"
+            style="@style/BaseScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_15"
+            android:paddingBottom="@dimen/dp_10">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.eucleia.pdicheck.widget.NoScrollGridView
+                    android:id="@+id/info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/block_white9"
+                    android:clickable="false"
+                    android:numColumns="2" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/group_recycler"
+                    style="@style/BaseRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/info" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:src="@drawable/ic_qualified"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+
+        </com.eucleia.pdicheck.widget.CheckPlanScrollView>
+
+        <TextView
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/dp_15"
+            android:layout_marginEnd="@dimen/dp_15"
+            android:layout_marginBottom="@dimen/dp_13"
+            android:background="@drawable/block_mian1"
+            android:gravity="center"
+            android:onClick="@{listener::singleClick}"
+            android:text="@string/stop"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_11" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

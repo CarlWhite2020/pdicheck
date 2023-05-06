@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="listener"
+            type="com.eucleia.pdicheck.listener.SingleClickListener" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_head_base"
+            android:id="@+id/head_base"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_30"
+            android:text="@string/input_vin_auto1"
+            android:textColor="@color/main"
+            android:textSize="@dimen/sp_10" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_30"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_25"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/input_vin"
+                android:layout_width="@dimen/dp_400"
+                android:maxLength="17"
+                android:layout_height="match_parent"
+                android:background="@drawable/block_white2"
+                android:paddingStart="@dimen/dp_13"
+                android:paddingEnd="@dimen/dp_13"
+                android:hint="@string/input_vin"
+                android:inputType="textVisiblePassword"
+                android:textColor="@color/text_main"
+                android:textColorHint="@color/text_third"
+                android:textSize="@dimen/sp_10" />
+
+            <TextView
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_20"
+                android:background="@drawable/block_mian1"
+                android:gravity="center"
+                android:onClick="@{listener::singleClick}"
+                android:text="@string/define"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_10" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

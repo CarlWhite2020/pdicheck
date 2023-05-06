@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/transparent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/block_white2"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:background="@drawable/block_white2"
+                android:gravity="center"
+                android:text="@string/clear_report_title"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/sp_11"
+                android:textStyle="bold" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0_5"
+                android:background="@color/split" />
+
+            <TextView
+                android:id="@+id/clear_all"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:background="@drawable/block_white2"
+                android:gravity="center"
+                android:text="@string/clear_report_all"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/sp_11" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0_5"
+                android:background="@color/split" />
+
+            <TextView
+                android:id="@+id/keep_month"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:background="@drawable/block_white2"
+                android:gravity="center"
+                android:text="@string/clear_report_keep_month"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/sp_11" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0_5"
+                android:background="@color/split" />
+
+            <TextView
+                android:id="@+id/keep_week"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:background="@drawable/block_white2"
+                android:gravity="center"
+                android:text="@string/clear_report_keep_week"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/sp_11" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0_5"
+                android:background="@color/split" />
+
+            <TextView
+                android:id="@+id/keep_day"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:background="@drawable/block_white2"
+                android:gravity="center"
+                android:text="@string/clear_report_keep_day"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/sp_11" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/cancel_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@drawable/block_white7"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/text_hint"
+            android:textSize="@dimen/sp_11" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

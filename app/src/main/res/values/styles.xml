@@ -1,0 +1,80 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.DayNight">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@drawable/bg_main</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="Transparent" parent="Theme.AppCompat.DayNight">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
+    <style name="BaseRecycler" parent="Theme.AppCompat">
+        <item name="android:overScrollMode">never</item>
+    </style>
+
+    <style name="BaseScrollView" parent="BaseRecycler">
+        <item name="android:scrollbars">none</item>
+        <item name="android:overScrollMode">never</item>
+    </style>
+
+    <style name="BaseSwitch" parent="Theme.AppCompat">
+        <item name="thumbTint">@color/color_main_selector2</item>
+        <item name="android:background">@drawable/switch_custom_track_selector</item>
+        <item name="trackTint">@color/transparent</item>
+        <item name="android:paddingStart">@dimen/dp_3</item>
+        <item name="android:paddingEnd">@dimen/dp_3</item>
+        <item name="android:paddingTop">@dimen/dp_1</item>
+        <item name="android:paddingBottom">@dimen/dp_1</item>
+        <item name="switchMinWidth">@dimen/dp_30</item>
+        <item name="trackHeight">@dimen/dp_1</item>
+        <item name="track">@drawable/switch_thumb</item>
+        <item name="android:thumb">@drawable/switch_thumb</item>
+        <item name="android:height">@dimen/dp_15</item>
+    </style>
+
+    <style name="BaseSpinner" parent="Theme.AppCompat">
+        <item name="android:spinnerMode">dropdown</item>
+    </style>
+
+    <style name="BaseProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progressbar_base</item>
+        <item name="android:indeterminate">false</item>
+    </style>
+
+
+    <style name="DialogStyle" parent="@android:style/Theme.Holo.Dialog">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!-- 背景透明 -->
+        <item name="android:windowFrame">@color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
+</resources>

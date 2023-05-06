@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/block_white2"
+        android:gravity="center_horizontal"
+        android:minWidth="@dimen/dp_200"
+        android:orientation="vertical">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_30"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:text="@string/tip"
+            android:textColor="@color/text_main"
+            android:textSize="@dimen/sp_13"
+            android:textStyle="bold"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dialog_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="80dp"
+            android:padding="@dimen/dp_20"
+            android:textColor="@color/text_main"
+            android:textSize="@dimen/sp_12" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/input_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="80dp"
+            android:paddingLeft="30dp"
+            android:paddingTop="20dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="20dp"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/dialog_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/block_white2"
+                android:gravity="center"
+                android:minHeight="38dp"
+                android:textColor="@color/text_second"
+                android:textSize="@dimen/sp_12"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0_5"
+            android:background="@color/split" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/btn_layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btn_cancel"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_30"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@color/text_hint"
+                android:textSize="@dimen/sp_10" />
+
+            <View
+                android:layout_width="@dimen/dp_0_5"
+                android:layout_height="match_parent"
+                android:background="@color/split" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btn_ok"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_30"
+                android:layout_marginStart="@dimen/dp_0_5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ok"
+                android:textColor="@color/main"
+                android:textSize="@dimen/sp_10" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/btn_layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btn_single"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:gravity="center"
+                android:text="@string/ok"
+                android:textColor="@color/main"
+                android:textSize="@dimen/sp_10" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>

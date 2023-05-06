@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.eucleia.tabscanap.constant.CharVar" />
+
+        <import type="android.view.View" />
+
+        <import type="com.eucleia.pdicheck.bean.normal.HeadBase" />
+
+        <variable
+            name="head"
+            type="HeadBase" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_10">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:onClick="@{head.backListener::singleClick}"
+            android:orientation="horizontal"
+            android:visibility="@{head.backVisibility?View.VISIBLE:View.GONE}">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_5"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:text="@{head.backText}"
+                android:textColor="@color/text_home"
+                android:textSize="@dimen/sp_15" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@{head.title}"
+            android:textColor="@color/txt_title"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_vertical"
+            android:onClick="@{head.rightListener::singleClick}"
+            android:orientation="horizontal"
+            android:visibility="@{head.vciVisibility?View.VISIBLE:View.GONE}">
+
+
+            <TextView
+                android:id="@+id/vci_voltage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{head.vciStatus.voltage+CharVar.VERSION}"
+                android:textColor="@color/txt_title"
+                android:textSize="@dimen/sp_15"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/vci_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_5"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:src="@{head.vciStatus.vciStatus==1?@drawable/ic_vci_ok:@drawable/ic_vci_no}" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.eucleia.pdicheck.bean.normal.MineType" />
+
+        <variable
+            name="clickListener"
+            type="com.eucleia.pdicheck.listener.IndexMineFunListener" />
+
+        <variable
+            name="index"
+            type="com.eucleia.pdicheck.bean.normal.MineType" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/head_normal"
+                layout="@layout/layout_head_normal" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:background="@drawable/block_white2"
+                android:gravity="center_vertical"
+                android:onClick="@{clickListener::resetPwd}"
+                android:paddingStart="@dimen/dp_10"
+                android:paddingEnd="@dimen/dp_10"
+                android:selected="@{index==MineType.RESETPWD}"
+                android:text="@string/change_pwd"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/sp_11"
+                app:drawableEndCompat="@drawable/ic_right" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:background="@drawable/block_white2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/connect_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:background="@drawable/block_white3"
+                    android:gravity="center_vertical"
+                    android:onClick="@{clickListener::connectVci}"
+                    android:paddingStart="@dimen/dp_10"
+                    android:paddingEnd="@dimen/dp_10"
+                    android:selected="@{index==MineType.CONNECT}"
+                    android:text="@string/contect_vci"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_11"
+                    app:drawableEndCompat="@drawable/ic_right" />
+
+                <View
+                    android:id="@+id/analyse_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0_5"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:background="@color/split" />
+
+                <TextView
+                    android:id="@+id/analyse_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:background="@drawable/block_white4"
+                    android:gravity="center_vertical"
+                    android:onClick="@{clickListener::analyze}"
+                    android:paddingStart="@dimen/dp_10"
+                    android:paddingEnd="@dimen/dp_10"
+                    android:selected="@{index==MineType.ANALYSE}"
+                    android:text="@string/analyze"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_11"
+                    android:visibility="gone"
+                    app:drawableEndCompat="@drawable/ic_right" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:background="@drawable/block_white2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:background="@drawable/block_white3"
+                    android:gravity="center_vertical"
+                    android:onClick="@{clickListener::checkPlan}"
+                    android:paddingStart="@dimen/dp_10"
+                    android:paddingEnd="@dimen/dp_10"
+                    android:selected="@{index==MineType.CHECKPLAN}"
+                    android:text="@string/check_plan"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_11"
+                    app:drawableEndCompat="@drawable/ic_right" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0_5"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:background="@color/split" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:background="@drawable/block_white4"
+                    android:onClick="@{clickListener::transMode}"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/dp_10"
+                        android:paddingEnd="@dimen/dp_10"
+                        android:text="@string/trans_mode_hint"
+                        android:textColor="@color/text_main"
+                        android:textSize="@dimen/sp_11" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/trans_mode_switch"
+                        style="@style/BaseSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/dp_10"
+                        android:clickable="false"
+                        android:gravity="center_vertical" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:background="@drawable/block_white2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:background="@drawable/block_white3"
+                    android:gravity="center_vertical"
+                    android:onClick="@{clickListener::about}"
+                    android:paddingStart="@dimen/dp_10"
+                    android:paddingEnd="@dimen/dp_10"
+                    android:selected="@{index==MineType.ABOUT}"
+                    android:text="@string/about"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_11"
+                    app:drawableEndCompat="@drawable/ic_right" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0_5"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:background="@color/split" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:background="@drawable/block_white4"
+                    android:gravity="center_vertical"
+                    android:onClick="@{clickListener::update}"
+                    android:paddingStart="@dimen/dp_10"
+                    android:paddingEnd="@dimen/dp_10"
+                    android:selected="@{index==MineType.UPDATE}"
+                    android:text="@string/update"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_11"
+                    app:drawableEndCompat="@drawable/ic_right" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/dp_10"
+                android:background="@drawable/block_white2"
+                android:gravity="center"
+                android:onClick="@{clickListener::exit}"
+                android:paddingStart="@dimen/dp_10"
+                android:paddingEnd="@dimen/dp_10"
+                android:text="@string/logout"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/sp_11" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="@dimen/dp_0_5"
+            android:layout_height="match_parent"
+            android:background="@color/split" />
+
+        <FrameLayout
+            android:id="@+id/child_frag"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:visibility="@{index==MineType.NONE?View.INVISIBLE:View.VISIBLE}" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

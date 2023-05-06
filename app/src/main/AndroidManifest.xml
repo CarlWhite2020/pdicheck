@@ -1,0 +1,87 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.eucleia.pdicheck">
+
+
+    <!-- 蓝牙相关权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_PRIVILEGED"
+        tools:ignore="ProtectedPermissions" />
+
+    <!-- Android6.0 蓝牙扫描才需要-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- 升级时，安装APK权限 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <dist:module dist:instant="true" />
+
+    <application
+        android:name="com.eucleia.BaseApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activity.normal.SplashActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.normal.MainActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.normal.LoginActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.normal.InputVinActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.normal.ChooseCarActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.normal.CheckPlanActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.normal.CarInfoActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.normal.CarCheckActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.normal.AnalyzeLogActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/apk_file_paths" />
+        </provider>
+    </application>
+</manifest>

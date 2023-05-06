@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.eucleia.tabscanap.constant.CharVar" />
+
+        <variable
+            name="funListener"
+            type="com.eucleia.pdicheck.listener.IndexReportFunListener" />
+
+        <variable
+            name="listener"
+            type="com.eucleia.pdicheck.listener.SingleClickListener" />
+
+        <variable
+            name="resultFilter"
+            type="int" />
+
+        <variable
+            name="statusFilter"
+            type="int" />
+
+        <variable
+            name="model"
+            type="String" />
+
+        <variable
+            name="reportTitle"
+            type="String" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@{reportTitle}"
+                    android:textColor="@color/txt_title"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:onClick="@{funListener::calendar}"
+                    android:padding="@dimen/dp_5"
+                    android:src="@drawable/ic_date" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/date"
+                    android:onClick="@{funListener::clear}"
+                    android:padding="@dimen/dp_5"
+                    android:src="@drawable/ic_clean_code" />
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_25">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/block_white6"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:hint="@string/search"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:paddingStart="@dimen/dp_5"
+                    android:paddingEnd="@dimen/dp_5"
+                    android:textSize="@dimen/sp_11" />
+
+                <ImageView
+                    android:id="@+id/del"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:clickable="true"
+                    android:padding="@dimen/dp_5"
+                    android:src="@drawable/ic_close"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:id="@+id/date_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_25"
+                android:gravity="center">
+
+
+                <TextView
+                    android:id="@+id/report_date"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="15dp"
+                    android:layout_weight="1"
+                    android:gravity="start|center_vertical"
+                    android:textColor="@color/text_second"
+                    android:textSize="@dimen/sp_10" />
+
+                <TextView
+                    android:id="@+id/date_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/dp_15"
+                    android:paddingEnd="@dimen/dp_15"
+                    android:text="@string/clear"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_10" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/report_group"
+                style="@style/BaseRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:paddingTop="@dimen/dp_6" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="@dimen/dp_0_5"
+            android:layout_height="match_parent"
+            android:background="@color/split" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10">
+
+            <include
+                android:id="@+id/head_normal"
+                layout="@layout/layout_head_normal" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/by_result"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/sp_10" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@drawable/block_grey1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/block_grey2"
+                    android:gravity="center"
+                    android:onClick="@{funListener::resultClick}"
+                    android:selected="@{resultFilter==-1}"
+                    android:tag="-1"
+                    android:text="@string/all"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_10" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/block_grey2"
+                    android:gravity="center"
+                    android:onClick="@{funListener::resultClick}"
+                    android:selected="@{resultFilter==1}"
+                    android:tag="1"
+                    android:text="@string/qualified"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_10" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/block_grey2"
+                    android:gravity="center"
+                    android:onClick="@{funListener::resultClick}"
+                    android:selected="@{resultFilter==0}"
+                    android:tag="0"
+                    android:text="@string/unqualified"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_10" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:text="@string/by_status"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/sp_10" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@drawable/block_grey1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/block_grey2"
+                    android:gravity="center"
+                    android:onClick="@{funListener::statusClick}"
+                    android:selected="@{statusFilter==0}"
+                    android:tag="0"
+                    android:text="@string/all"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_10" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/block_grey2"
+                    android:gravity="center"
+                    android:onClick="@{funListener::statusClick}"
+                    android:selected="@{statusFilter==1}"
+                    android:tag="1"
+                    android:text="@string/uploaded"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_10" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/block_grey2"
+                    android:gravity="center"
+                    android:onClick="@{funListener::statusClick}"
+                    android:selected="@{statusFilter==2}"
+                    android:tag="2"
+                    android:text="@string/upload_fail"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/sp_10" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:text="@string/by_model"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/sp_10" />
+
+
+            <com.eucleia.pdicheck.widget.ModelFlowLayout
+                android:id="@+id/model_flow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                app:lineSpacing="@dimen/dp_10"
+                app:itemSpacing="@dimen/dp_15"
+                android:gravity="center_vertical"/>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/dp_13"
+                android:background="@drawable/block_mian1"
+                android:gravity="center"
+                android:onClick="@{listener::singleClick}"
+                android:text="@string/define"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_11" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

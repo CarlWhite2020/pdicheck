@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.eucleia.pdicheck.listener.SingleClickListener" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/head_normal"
+            layout="@layout/layout_head_normal" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/block_white2"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/old_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:background="@color/transparent"
+                android:hint="@string/old_pwd"
+                android:paddingStart="@dimen/dp_10"
+                android:paddingEnd="@dimen/dp_10"
+                android:singleLine="true"
+                android:textColor="@color/text_second"
+                android:textColorHint="@color/text_third"
+                android:textSize="@dimen/sp_11" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0_5"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:background="@color/split" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/new_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:background="@color/transparent"
+                android:hint="@string/new_pwd"
+                android:paddingStart="@dimen/dp_10"
+                android:paddingEnd="@dimen/dp_10"
+                android:singleLine="true"
+                android:textColor="@color/text_second"
+                android:textColorHint="@color/text_third"
+                android:textSize="@dimen/sp_11" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_30"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/dp_30"
+            android:background="@drawable/block_mian1"
+            android:gravity="center"
+            android:onClick="@{listener::singleClick}"
+            android:text="@string/define"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_11" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

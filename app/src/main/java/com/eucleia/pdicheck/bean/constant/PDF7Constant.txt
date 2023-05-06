@@ -1,0 +1,32 @@
+package com.eucleia.tabscanap.constant;
+
+
+import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.DeviceRgb;
+
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
+public interface PDF7Constant {
+
+    SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
+
+    Color bgColor = new DeviceRgb(0xEE, 0xEE, 0xEE);
+    Color mainColor = new DeviceRgb(0x33, 0x33, 0x33);
+    Color hintColor = new DeviceRgb(0x99, 0x99, 0x99);
+    Color redColor = new DeviceRgb(0xFC, 0x53, 0x5D);
+    Color yellowColor = new DeviceRgb(0xF8, 0xAC, 0x2F);
+    Color splitColor = new DeviceRgb(0xC1,0xD5,0xD6);
+
+    int headSize = 20;
+    int mianSize = 12;
+    int hintSize = 10;
+    int minSize = 8;
+
+    String qualifiedImage = "pdf_resource/ic_qualified.png";
+    String unqualifiedImage = "pdf_resource/ic_unqualified.png";
+    String goodImage = "pdf_resource/ic_good.png";
+    String errorImage = "pdf_resource/ic_error.png";
+    String warnImage = "pdf_resource/ic_warn.png";
+
+}

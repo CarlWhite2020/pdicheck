@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/block_grey3"
+        android:paddingBottom="@dimen/dp_1"
+        android:layout_height="@dimen/dp_40">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/number"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:textColor="@color/text_hint"
+            android:textSize="@dimen/sp_10"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/number"
+            android:gravity="center"
+            android:textColor="@color/text_main"
+            android:textSize="@dimen/sp_10" />
+
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@id/name"
+            android:layout_width="match_parent"
+            android:background="@color/split"
+            android:layout_height="@dimen/dp_0_5"/>
+    </RelativeLayout>
+
+</layout>
