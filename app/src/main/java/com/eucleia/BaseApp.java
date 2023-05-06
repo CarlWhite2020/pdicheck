@@ -6,17 +6,14 @@ import android.content.res.Configuration;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.multidex.MultiDexApplication;
 
 import com.blankj.utilcode.util.Utils;
 import com.eucleia.pdicheck.bean.constant.Constant;
 import com.eucleia.pdicheck.bean.constant.SPKEY;
 import com.eucleia.pdicheck.bean.normal.ChangeOrientation;
-import com.eucleia.pdicheck.net.CloudInterceptor;
+import com.eucleia.pdicheck.net.ApiInterceptor;
 import com.eucleia.pdicheck.vm.AppVM;
-import com.eucleia.pdicheck.vm.viewmodel.DiagViewViewModel;
-import com.eucleia.pdicheck.vm.viewmodel.VciStatusViewModel;
 import com.eucleia.tabscanap.bean.model.BtFilter;
 import com.eucleia.tabscanap.constant.BTConstant;
 import com.eucleia.tabscanap.util.AnalyseLogUtils;
@@ -66,7 +63,7 @@ public class BaseApp extends MultiDexApplication {
         HttpHeaders.setUserAgent("okHttp-okGo/pdiCheck");
         OkHttpClient client=new OkHttpClient.Builder()
                 .addInterceptor(
-                    new CloudInterceptor()
+                    new ApiInterceptor()
                 ).build();
         OkGo.getInstance().init(this).setRetryCount(1).setOkHttpClient(client);
 

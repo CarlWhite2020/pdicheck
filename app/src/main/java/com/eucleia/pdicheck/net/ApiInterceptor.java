@@ -16,7 +16,7 @@ import okhttp3.Response;
 /**
  * 云端服务器请求拦截器
  */
-public class CloudInterceptor implements Interceptor {
+public class ApiInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request originalRequest = chain.request();//管道中的请求对象
